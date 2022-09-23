@@ -32,6 +32,12 @@ const outputRoot = path.resolve(artifactRoot, "Set " + counter);
 fs.mkdirSync(outputRoot, { recursive: true });
 
 const templateRoot = path.resolve(root, "templates");
+
+if (!fs.existsSync(templateRoot)) {
+  console.log('No templates found')
+  process.exit(0)
+}
+
 const templates = fs
   .readdirSync(templateRoot)
   .map((file) => path.resolve(templateRoot, file))
